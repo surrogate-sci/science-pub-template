@@ -95,4 +95,31 @@
     --arcadia-fern: #47784A;
     --arcadia-matcha: #71AC5A;
     --arcadia-edamame: #C1E1AE;
+
+    /* Surrogate Science palette overrides */
+    --arcadia-body-color: #141d2b;
+    --arcadia-label-color: #2f3a4d;
+    --arcadia-muted-color: #5a6578;
+    --arcadia-link-color: #0b6fb8;
+    --arcadia-black: #0d1420;
+    --arcadia-black-50: #0d142080;
+    --arcadia-black-20: #0d142033;
+    --arcadia-white: #ffffff;
+    --arcadia-white-50: #ffffff80;
+    --arcadia-white-20: #ffffff33;
+    --arcadia-charcoal: #1f2633;
+    --arcadia-crow: #151a24;
+    --arcadia-slate: #2d3544;
+    --arcadia-brightgray: #dfe5ee;
+    --arcadia-paper: #f8fafd;
+    --arcadia-steel: #526175;
+    --arcadia-cloud: #8ea0b8;
+    --arcadia-ice: #d4dde9;
+    --arcadia-dusk: #005b99;
+    --arcadia-lapis: #1f6fb2;
+    --arcadia-mustard: #c98512;
+    --arcadia-dragon: #c4414d;
+    --arcadia-teal: #2d8f84;
+    --arcadia-tumbleweed: #d98a62;
+    --arcadia-pewter: #173a5e;
 }

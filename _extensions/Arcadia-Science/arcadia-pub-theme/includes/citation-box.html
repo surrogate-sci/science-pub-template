@@ -7,7 +7,7 @@
         <button id="close-citation-box" class="close-button" aria-label="Close citation box">×</button>
       </div>
       <div class="citation-tabs">
-        <button class="citation-tab-button active" data-format="styled">Arcadia</button>
+        <button class="citation-tab-button active" data-format="styled">Surrogate</button>
         <button class="citation-tab-button" data-format="bibtex">BibTeX</button>
       </div>
       <div class="citation-body">
@@ -128,7 +128,7 @@
         const bibtexContentFinal = `@article{${bibtexKey},
     author = {${bibtexAuthors}},
     title = {${titleWithCaps}},
-    journal = {Arcadia Science},
+    journal = {Surrogate Science},
     year = {${pubData.year}},${pubData.doi ? `\n    doi = {${pubData.doi}},` : ''}
     url = {${url}}
 }`;

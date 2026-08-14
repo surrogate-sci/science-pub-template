@@ -10,7 +10,6 @@ contributes:
         - css/citation-box.css
       include-in-header:
         - file: includes/fonts.html
-        - file: includes/logo-animation.html
         - file: includes/author-reveal.html
         - file: includes/mini-title.html
         - file: includes/version-in-title.html
