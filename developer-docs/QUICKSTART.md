@@ -11,7 +11,7 @@
     * Replace the variables in `_variables.yml`
       - The `google_analytics_id` field can be left blank during development, but should be populated before publishing. See the [Publishing Guide](PUBLISHING_GUIDE.md) for more details.
     * Feel free to edit the variables in `authors.yml`.
-      - Ultimately, Publishing Team will provide you with an `authors.yml` based on the contributor roles they assign for the publication, so this isn't necessary.
+      - Replace the example author information with the people and contributor roles for your publication before release.
 
 3. **Install Quarto**
 
@@ -37,9 +37,9 @@
 
     The matching render commands are `make render-warm` and `make render-technical`. In CI, set `QUARTO_PROFILE=technical-notebook` to select the technical theme.
 
-6. **Register your publication**
+6. **Prepare publication metadata**
 
-    If you intend to publish your analysis, fill out the "*Kick off a new pub*" form on the AirTable [Publishing toolkit](https://airtable.com/appN7KQ55bT6HHfog/pagm69ti1kZK1GhBx).
+    Before release, replace the placeholders in `CITATION.cff`, `authors.yml`, `_variables.yml`, and `README.md` with accurate publication details.
 
 7. **Create your publication**
 

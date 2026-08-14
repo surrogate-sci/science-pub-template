@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
-THEME = ROOT / "_extensions/Arcadia-Science/arcadia-pub-theme"
+THEME = ROOT / "_extensions/surrogate-sci/ss-pub-theme"
 ALLOWED = {"#F5F0E2", "#235F66", "#F28A1C", "#FFB83E", "#30332F"}
 
 
@@ -39,12 +39,79 @@ def test_active_logo_is_transparent():
     assert "<rect" not in logo
 
 
-def test_arcadia_updater_cannot_overwrite_custom_theme():
+def test_no_upstream_theme_updater_can_overwrite_custom_theme():
     active_automation = (ROOT / "Makefile").read_text()
     active_automation += "\n".join(
         path.read_text() for path in (ROOT / ".github/workflows").glob("*.yml")
     )
     assert "Arcadia-Science/notebook-pub-theme" not in active_automation
+
+
+def test_surrogate_extension_uses_the_published_quarto_identifier():
+    old_theme = ROOT / "_extensions/Arcadia-Science/arcadia-pub-theme"
+    assert THEME.is_dir()
+    assert not old_theme.exists()
+
+    for config in (
+        ROOT / "_quarto.yml",
+        ROOT / "_quarto-warm-journal.yml",
+        ROOT / "_quarto-technical-notebook.yml",
+    ):
+        contents = config.read_text()
+        assert "surrogate-sci/ss-pub-theme-html" in contents
+        assert "Arcadia-Science/arcadia-pub-theme-html" not in contents
+        assert "_extensions/Arcadia-Science/arcadia-pub-theme" not in contents
+
+
+def test_extension_metadata_and_csl_are_surrogate_science_branded_with_attribution():
+    extension = (THEME / "_extension.yml").read_text()
+    csl = (THEME / "assets/surrogate-science.csl").read_text()
+
+    assert 'quarto-required: ">=1.8.25"' in extension
+    assert "<title>Surrogate Science</title>" in csl
+    assert "surrogate-science" in csl
+    assert "Feridun Mert Celebi" in csl
+    assert "Megan Hochstrasser" in csl
+    assert "Creative Commons Attribution-ShareAlike 3.0" in csl
+
+
+def test_active_theme_uses_only_surrogate_css_custom_properties():
+    css = "\n".join(path.read_text() for path in (THEME / "css").rglob("*.css"))
+    assert "--arcadia-" not in css
+    assert "--surrogate-" in css
+
+
+def test_template_metadata_uses_reusable_surrogate_placeholders():
+    variables = (ROOT / "_variables.yml").read_text()
+    citation = (ROOT / "CITATION.cff").read_text()
+    license_text = (ROOT / "LICENSE").read_text()
+
+    assert 'org: "surrogate-sci"' in variables
+    assert 'repo: "science-pub-template"' in variables
+    assert "Surrogate Science Publication Template" in citation
+    assert "[AUTHOR" in citation
+    assert "doi:" not in citation.lower()
+    assert "repository-code: https://github.com/surrogate-sci/science-pub-template" in citation
+    assert "Copyright (c) 2024 Arcadia Science" in license_text
+    assert "Copyright (c) 2026 Surrogate Science" in license_text
+
+
+def test_active_documentation_has_no_arcadia_operations_or_urls():
+    active_paths = [
+        ROOT / "README.md",
+        ROOT / "CITATION.cff",
+        ROOT / "_quarto.yml",
+        ROOT / "_quarto-warm-journal.yml",
+        ROOT / "_quarto-technical-notebook.yml",
+        ROOT / "_variables.yml",
+        ROOT / "examples/demo.bib",
+        *(ROOT / "developer-docs").glob("*.md"),
+        *(ROOT / "pages").glob("*.qmd"),
+    ]
+    active_docs = "\n".join(path.read_text() for path in active_paths)
+
+    assert "arcadia" not in active_docs.lower()
+    assert "https://surrogate-sci.dev/" in active_docs
 
 
 def test_cookie_banner_controls_use_brand_tokens():

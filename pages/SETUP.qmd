@@ -10,7 +10,7 @@ This document details how to create a local copy of this pub's codebase, setup y
 
 The codebase is hosted on GitHub and can be found [here](https://github.com/{{< var pub.org >}}/{{< var pub.repo >}}).
 
-To obtain a local copy of this repo, you can either *clone* it directly or fork it to your own GitHub account, then clone your fork. If you aren't sure what's best, our suggestion is to clone directly unless you both (1) want to propose a revision for the publication and (2) are not an employee of Arcadia Science.
+To obtain a local copy of this repo, you can either *clone* it directly or fork it to your own GitHub account, then clone your fork. If you aren't sure which to choose, clone directly for reproduction and fork when you intend to propose revisions.
 
 To clone:
 

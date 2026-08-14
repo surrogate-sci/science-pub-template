@@ -1,16 +1,16 @@
 .title-block-header {
-    background-color: var(--arcadia-white) !important;
+    background-color: var(--surrogate-paper) !important;
 }
 
 .quarto-title-banner {
-    background-color: var(--arcadia-pewter) !important;
+    background-color: var(--surrogate-teal) !important;
     margin: 0;
     padding-top: 3em;
     padding-bottom: 3em;
 }
 
 .quarto-title-banner h1 {
-    color: var(--arcadia-white) !important;
+    color: var(--surrogate-paper) !important;
     font-family: var(--nb-font-serif) !important;
     font-weight: 400 !important;
     font-size: 2.5rem;
@@ -28,7 +28,7 @@
 #title-block-header.quarto-title-block.default .quarto-title-meta-heading {
     font-family: var(--nb-font-mono);
     font-weight: 300;
-    color: var(--arcadia-label-color);
+    color: var(--surrogate-label-color);
 }
 
 #quarto-header {
@@ -88,7 +88,7 @@
 }
 
 .tippy-box {
-  background-color: var(--arcadia-crow);
+  background-color: var(--surrogate-charcoal);
   color: var(--surrogate-paper);
   padding: 8px;
   border-radius: 4px;
@@ -133,7 +133,7 @@
     text-transform: uppercase;
     margin-top: 1em;
     font-size: .8em;
-    color: var(--arcadia-label-color);
+    color: var(--surrogate-label-color);
     font-weight: 300;
     text-align: left;
 }
@@ -157,7 +157,7 @@
 #title-block-header.quarto-title-block.default .abstract .block-title {
   font-family: var(--nb-font-mono);
   font-weight: 300;
-  color: var(--arcadia-label-color);
+  color: var(--surrogate-label-color);
   margin-bottom: 0.2rem;
   margin-top: 0;
 }
@@ -165,7 +165,7 @@
 .abstract p {
   font-family: var(--nb-font-serif);
   font-weight: 400;
-  color: var(--arcadia-body-color);
+  color: var(--surrogate-body-color);
   line-height: 1.6;
   margin: 0;
 }

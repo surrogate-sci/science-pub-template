@@ -1,14 +1,14 @@
 h1 {
     font-family: var(--nb-font-serif) !important;
     font-weight: 400 !important;
-    color: var(--arcadia-black);
+    color: var(--surrogate-charcoal);
     font-size: var(--nb-h1-font-size);
 }
 
 h2 {
     font-family: var(--nb-font-sans) !important;
     font-weight: 700 !important;
-    color: var(--arcadia-black);
+    color: var(--surrogate-charcoal);
     font-size: var(--nb-h2-font-size);
 }
 
@@ -40,7 +40,7 @@ h3 {
 
 body {
     font-family: var(--nb-font-sans);
-    color: var(--arcadia-body-color);
+    color: var(--surrogate-body-color);
     background-color: var(--surrogate-paper);
 }
 .tooltip-inner {
@@ -53,7 +53,7 @@ body {
 figcaption, .figure-caption {
     font-family: var(--nb-font-sans);
     font-weight: 400;
-    color: var(--arcadia-muted-color);
+    color: var(--surrogate-muted-color);
 }
 
 code, pre, .sourceCode {

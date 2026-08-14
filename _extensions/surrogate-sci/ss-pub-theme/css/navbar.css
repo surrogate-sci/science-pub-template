@@ -44,7 +44,7 @@ footer.footer .nav-footer, #quarto-header>nav {
 .navbar {
     --bs-navbar-brand-padding-y: 1rem;
     --bs-nav-link-font-size: 1.2rem;
-    background-color: var(--arcadia-white) !important;
+    background-color: var(--surrogate-paper) !important;
     padding-bottom: 0em;
     padding-top: 0em;
 }
@@ -101,14 +101,14 @@ body:not(:has(.abstract)) .navbar-nav .nav-item:has(iconify-icon[icon="nrk:back"
 }
 
 .navbar-logo {
-  max-height: var(--arcadia-logo-size);
+  max-height: var(--surrogate-logo-size);
   width: auto;
   display: block;
   object-fit: contain;
 }
 
 .navbar-logo.video-logo {
-  max-height: var(--arcadia-logo-size);
+  max-height: var(--surrogate-logo-size);
   position: absolute;
   top: 0;
   left: 0;
@@ -120,5 +120,5 @@ body:not(:has(.abstract)) .navbar-nav .nav-item:has(iconify-icon[icon="nrk:back"
 }
 
 .menu-text {
-    color: var(--arcadia-black) !important;
+    color: var(--surrogate-charcoal) !important;
 }

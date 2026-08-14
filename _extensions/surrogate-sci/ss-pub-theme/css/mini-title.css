@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--arcadia-pewter);
+  background-color: var(--surrogate-teal);
   color: var(--surrogate-paper);
   z-index: 1020;
   height: var(--mini-title-height);

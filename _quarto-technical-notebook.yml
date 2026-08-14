@@ -1,4 +1,4 @@
 format:
-  Arcadia-Science/arcadia-pub-theme-html:
+  surrogate-sci/ss-pub-theme-html:
     body-classes: surrogate-technical-notebook
-    css: _extensions/Arcadia-Science/arcadia-pub-theme/css/themes/technical-notebook.css
+    css: _extensions/surrogate-sci/ss-pub-theme/css/themes/technical-notebook.css

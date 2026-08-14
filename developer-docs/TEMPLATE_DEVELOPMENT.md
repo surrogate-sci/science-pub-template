@@ -1,14 +1,14 @@
 # Template Development Guide
 
-This guide is for people **developing the notebook-pub-template itself** — adding extensions, updating the demo notebook, modifying `_quarto.yml`, or changing how the template works. If you're using the template to create a publication, see the [Quickstart Guide](QUICKSTART.md) instead.
+This guide is for people **developing the science-pub-template itself** — adding extensions, updating the demo notebook, modifying `_quarto.yml`, or changing how the template works. If you're using the template to create a publication, see the [Quickstart Guide](QUICKSTART.md) instead.
 
 ## Environment setup
 
 You need [Quarto](https://quarto.org/docs/get-started/) installed separately — it's not included in `env.yml`.
 
 ```bash
-conda env create -n notebook-pub-template --file env.yml
-conda activate notebook-pub-template
+conda env create -n science-pub-template --file env.yml
+conda activate science-pub-template
 pip install -e .
 pre-commit install
 ```
@@ -36,7 +36,7 @@ This runs `quarto render examples/demo.ipynb --execute` and updates the freeze r
 
 ## Updating the theme
 
-The theme (`arcadia-pub-theme`) is special: it lives in a separate repo and is updated via `make update-theme`, which runs `quarto update extension Arcadia-Science/notebook-pub-theme --no-prompt`. Existing pub repos receive theme updates automatically through a GitHub Actions workflow.
+The theme is vendored at `_extensions/surrogate-sci/ss-pub-theme/`. Make deliberate, reviewed changes there and render both supported profiles before merging. There is no automatic upstream theme updater.
 
 ## Testing changes
 

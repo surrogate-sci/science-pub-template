@@ -52,9 +52,7 @@ notebook-pub-template/
 
 The `_extensions/` directory contains Quarto extensions. Quarto's extension system works through vendoring. When you run `quarto add`, it downloads the extension and copies it into your project's `_extensions/` directory. There is no global installation; each project contains its own copy of its extensions checked into the repository. This means when you clone a pub from this template repo, it already has all the extensions it needs.
 
-**The contents in `_extensions/` should not be edited directly**. Most important is **`Arcadia-Science/arcadia-pub-theme/`**, our publication theme. It provides all CSS styling, interactive components (sticky header, author reveal, citation modal), and assets like the citation style file. This extension is maintained in the [notebook-pub-theme](https://github.com/Arcadia-Science/notebook-pub-theme) repository.
-
-To update the Arcadia theme, see [notebook-pub-theme](https://github.com/Arcadia-Science/notebook-pub-theme) for detailed instructions.
+**The contents in `_extensions/` should not be edited directly** when authoring a publication. The vendored **`surrogate-sci/ss-pub-theme/`** extension provides CSS styling, interactive components (sticky header, author reveal, citation modal), and assets such as the citation style file. Template maintainers should make reviewed changes to this copy in the repository.
 
 To update/add any of the other extensions, use [`quarto add`](https://quarto.org/docs/extensions/managing.html).
 
@@ -74,13 +72,13 @@ These files are generated and should not be edited directly.
 
 1. **Content Creation**: Authors edit `index.ipynb` with their analysis and narrative
 2. **Rendering**: Quarto converts notebooks to HTML using configurations in `_quarto.yml`
-3. **Styling**: The arcadia-pub-theme extension provides CSS, interactive components, and brand assets
+3. **Styling**: The `ss-pub-theme` extension provides CSS, interactive components, and brand assets
 4. **Output**: Final website is built in `_site/` and execution cache in `_freeze/`
 5. **Publishing**: GitHub Actions automate the publication process when merged to the `publish` branch
 
 ## Theme/Styling
 
-Any style changes should be made in the [`notebook-pub-theme`](https://github.com/Arcadia-Science/notebook-pub-theme) repo and added into this repo using Quarto's extension management system (see *Extensions* above). This separation allows styling improvements to be made in the extension and then propagated to all pub repos.
+For publication-specific styling changes, use the supported variables and profile CSS files. Template maintainers should update the vendored extension in a reviewed pull request.
 
 ## Setup/Publishing
 

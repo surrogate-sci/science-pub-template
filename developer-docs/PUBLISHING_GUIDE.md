@@ -34,7 +34,7 @@ Instructions are provided for:
 
 1. **Make the repository public**
 
-    In order for this pub to be open and reproducible, make the [repo public](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility). Be sure it meets [our standards](https://github.com/Arcadia-Science/arcadia-software-handbook/blob/main/guides-and-standards/standards--public-repos.md) for public-facing repos.
+    In order for this pub to be open and reproducible, make the [repo public](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility) when that is appropriate for its data and collaborators.
 
 1. **Enable comments**
 
@@ -42,16 +42,14 @@ Instructions are provided for:
 
     First, [enable GitHub Discussions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/enabling-or-disabling-github-discussions-for-a-repository) for your repo.
 
-    Second, [install the Giscus App](https://github.com/apps/giscus) for your repository. Click *Configure*, select *Arcadia-Science*, then select your repository from the dropdown. Click *Update access*.
-
-    **IMPORTANT**: Do not deselect any of the other Arcadia-Science repositories that already have the Giscus app installed, *e.g.* `Arcadia-Science/notebook-pub-template`.
+    Second, [install the Giscus App](https://github.com/apps/giscus) for the organization and repository that will host the publication. Click *Configure*, select the organization, select the repository, and click *Update access*.
 
     Now, edit the comments section in `_quarto.yml` with your repo name:
 
     ```yaml
     comments:
       giscus:
-        repo: Arcadia-Science/<your-repo-name>
+        repo: surrogate-sci/<your-repo-name>
         input-position: top
     ```
 
@@ -69,28 +67,17 @@ Instructions are provided for:
 
     Now, create a pull request to merge your branch into `main`. Once your PR is approved, merge into `main`.
 
-1. **Get approval from the Pub Team**
+1. **Complete release metadata**
 
-    Like all other pubs, follow the [AirTable toolkit guide](https://airtable.com/appN7KQ55bT6HHfog/pagm69ti1kZK1GhBx) through to the final step, "*Submit your pub for release*".
-
-    * Once all contributor roles have been assigned by the Publishing Team, generate `CITATION.cff` and `authors.yml` in the Release Center of the AirTable dashboard. Replace the template `CITATION.cff` and `authors.yml` with these files.
-    * Once all required authors sign the *AI methods form*, paste the following lines at the end of your section with the heading `## Abstract`:
-
-        ```
-        ----
-
-        :::{.callout-note title="AI usage disclosure" collapse="true"}
-        This is a placeholder for the AI usage disclosure. Once all authors sign the AI code form on AirTable, SlackBot will message you an AI disclosure that you should place here.
-        :::
-        ```
+    Replace the placeholders in `CITATION.cff`, `authors.yml`, `_variables.yml`, and `README.md` with accurate author, title, repository, and hosting information. Add any disclosures required by the venue, funder, or collaborators.
 
 1. **Add your Google Analytics ID to `_variables.yml`**
 
-    Add the Google Analytics ID provided by the Publishing Team to the `google_analytics_id` field in `_variables.yml`. This ID is used to track visits to the publication.
+    Add a Google Analytics ID, if you use one, to the `google_analytics_id` field in `_variables.yml`. This ID is used to track visits to the publication.
 
 1. **Create a tagged release of your repo**
 
-    Follow the instructions on Notion [here](https://www.notion.so/arcadiascience/How-to-archive-a-GitHub-repository-on-Zenodo-at-time-of-publication-1cd6202af5bb4b5ba8464caaba8e9bed) to link your repo to Zenodo and create a new tagged release. (Note: this step is the same one you would follow for a "normal" non-notebook pub.)
+    Follow Zenodo's [GitHub integration instructions](https://help.zenodo.org/docs/github/enable-repository/) to link your repository and create a new tagged release.
 
     Be sure to use a version number of the form 'v1' or 'v1.0' for this initial tagged release.
 
@@ -100,7 +87,7 @@ Instructions are provided for:
 
     This PR should be merged as-is. If you'd like, you can first preview the final publication by checking out the PR branch locally and running `make preview`.
 
-    The publication is deployed by a second GitHub Action that is triggered when this PR is merged. After a few minutes, the publication should be live and viewable at a URL of the form: `https://arcadiascience.github.io/<your-repo-name>`.
+    The publication is deployed by a second GitHub Action that is triggered when this PR is merged. After a few minutes, the publication should be live at a URL of the form: `https://surrogate-sci.dev/<your-repo-name>/`.
 
 1. **[If necessary] Configure GitHub Pages**
 

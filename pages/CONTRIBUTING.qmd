@@ -15,7 +15,7 @@ Alternatively, you're welcome to [leave a comment](FAQ.qmd#how-can-i-comment) on
 These are just a few examples of revisions that we'd be happy to receive from you.
 
 ::: {.callout-note}
-To learn about how we credit external collaborators, click [here](https://github.com/Arcadia-Science/arcadia-software-handbook/blob/main/guides-and-standards/guide--credit-for-contributions.md).
+Discuss contributor credit and authorship with the publication maintainers before release.
 :::
 
 ## Getting started
@@ -44,4 +44,4 @@ Once everything looks good, commit `index.ipynb` and all files in the `_freeze/`
 
 Finally, submit a pull request and we'll work with you to merge your changes.
 
-Once we approve and merge your pull request, we'll publish a new version of the pub. We'll notify you when this new version goes live at the [hosted URL](https://{{< var pub.org >}}.github.io/{{< var pub.repo >}}/). Thanks for contributing!
+Once we approve and merge your pull request, we'll publish a new version of the pub. We'll notify you when this new version goes live at the [hosted URL](https://surrogate-sci.dev/{{< var pub.repo >}}/). Thanks for contributing!
