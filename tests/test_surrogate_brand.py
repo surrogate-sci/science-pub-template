@@ -63,5 +63,11 @@ def test_cookie_banner_controls_use_brand_tokens():
 def test_note_callout_icon_does_not_use_bootstrap_blue():
     article = (THEME / "css/article.css").read_text()
     assert ".callout-note .callout-icon" in article
-    assert "background-image: none" in article
+    pseudo = re.search(
+        r"\.callout-note \.callout-icon::before\s*\{(?P<body>[^}]*)\}",
+        article,
+        flags=re.DOTALL,
+    )
+    assert pseudo
+    assert "background-image: none" in pseudo.group("body")
     assert "var(--surrogate-teal)" in article
