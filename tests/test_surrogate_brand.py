@@ -58,3 +58,10 @@ def test_cookie_banner_controls_use_brand_tokens():
     assert ".cc-nb-changep" in main
     assert "var(--surrogate-teal)" in main
     assert "var(--surrogate-paper)" in main
+
+
+def test_note_callout_icon_does_not_use_bootstrap_blue():
+    article = (THEME / "css/article.css").read_text()
+    assert ".callout-note .callout-icon" in article
+    assert "background-image: none" in article
+    assert "var(--surrogate-teal)" in article
