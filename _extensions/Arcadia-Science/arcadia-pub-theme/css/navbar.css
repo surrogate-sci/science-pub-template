@@ -104,6 +104,7 @@ body:not(:has(.abstract)) .navbar-nav .nav-item:has(iconify-icon[icon="nrk:back"
   max-height: var(--arcadia-logo-size);
   width: auto;
   display: block;
+  object-fit: contain;
 }
 
 .navbar-logo.video-logo {

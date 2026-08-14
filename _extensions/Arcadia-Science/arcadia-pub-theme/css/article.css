@@ -41,6 +41,7 @@ h3 {
 body {
     font-family: var(--nb-font-sans);
     color: var(--arcadia-body-color);
+    background-color: var(--surrogate-paper);
 }
 .tooltip-inner {
     font-family: var(--nb-font-sans) !important;
@@ -99,6 +100,24 @@ div.callout-note.callout {
 }
 div.callout-note.callout-style-default>.callout-header {
     background-color: rgb(from var(--callout-note-rgb) r g b / 0.1);
+}
+.callout-note .callout-icon {
+    display: inline-grid;
+    width: 1.1rem;
+    height: 1.1rem;
+    place-items: center;
+    border: 1px solid var(--surrogate-teal);
+    border-radius: 50%;
+    background-image: none !important;
+    color: var(--surrogate-teal);
+    font-family: var(--nb-font-label);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 700;
+}
+.callout-note .callout-icon::before {
+    content: "i";
+    background-image: none !important;
 }
 div.callout-warning.callout {
     border-left-color: var(--callout-warning-rgb);

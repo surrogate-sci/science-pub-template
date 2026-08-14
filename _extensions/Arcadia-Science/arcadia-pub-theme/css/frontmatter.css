@@ -33,7 +33,7 @@
 
 #quarto-header {
     z-index: 1030;
-    border-bottom: 1px solid #262626;
+    border-bottom: 1px solid var(--surrogate-charcoal);
 }
 
 #title-version-control {
@@ -47,7 +47,7 @@
 }
 
 .title-version-menu .nav-link {
-  color: white;
+  color: var(--surrogate-paper);
   display: inline-flex;
   align-items: center;
 }
@@ -57,7 +57,7 @@
 }
 
 .title-version-menu .dropdown-toggle::after {
-  color: white;
+  color: var(--surrogate-paper);
   margin-left: 0.25rem;
   vertical-align: baseline;
 }
@@ -89,7 +89,7 @@
 
 .tippy-box {
   background-color: var(--arcadia-crow);
-  color: white;
+  color: var(--surrogate-paper);
   padding: 8px;
   border-radius: 4px;
   font-size: 14px;
@@ -125,7 +125,7 @@
 
 .author-name {
   cursor: help;
-  border-bottom: 1px dotted #666;
+  border-bottom: 1px dotted var(--surrogate-charcoal-68);
   display: inline-block;
 }
 .authors-toggle-text, .authors-toggle-icon {
@@ -142,7 +142,7 @@
   display: block;
   font-style: italic;
   font-size: 0.8em;
-  color: #666;
+  color: var(--surrogate-charcoal-68);
   margin-bottom: 0.2rem;
 }
 

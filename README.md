@@ -1,6 +1,24 @@
-# Notebook Publication Template
+# Surrogate Science Publication Template
 
-This repo is a template for Jupyter notebook publications. The template produces a publication rendered and hosted by Quarto, which can be viewed at [this demo URL](https://arcadia-science.github.io/notebook-pub-template/).
+This repository is a Surrogate Science template for computational publications authored in Quarto. It supports Jupyter notebooks, executable Python or R content, reproducible figures, and a GitHub Pages HTML publication.
+
+## Publication themes
+
+The template includes two separate themes built from the same Surrogate Science palette and type system:
+
+- **Warm Journal** is the default. It uses Cormorant Garamond for editorial display, Assistant for interface text, and Fira for labels and code.
+- **Technical Notebook** uses Assistant Semibold for technical display, a teal masthead, and Fira for labels and code.
+
+Preview or render either theme explicitly:
+
+```bash
+make preview-warm
+make preview-technical
+make render-warm
+make render-technical
+```
+
+For CI or hosting, set `QUARTO_PROFILE=technical-notebook` to select Theme B. Without an explicit profile, Quarto uses `warm-journal`.
 
 ## Template Documentation
 
@@ -19,7 +37,7 @@ All the learning resources for this template can be found in `developer-docs/`.
 
 This code repository contains or points to all materials required for creating and hosting the publication entitled, *"[PUB-TITLE]"*.
 
-The publication is hosted at [this URL](https://arcadia-science.github.io/[REPO-NAME]/).
+The publication is hosted at [this URL](https://surrogate-sci.dev/[REPO-NAME]/).
 
 ## Data Description
 

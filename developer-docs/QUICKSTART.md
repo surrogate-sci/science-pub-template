@@ -21,11 +21,27 @@
 
     See the [Environment Setup Guide](ENVIRONMENT_SETUP.md) for complete instructions.
 
-5. **Register your publication**
+5. **Choose a publication theme**
+
+    Warm Journal is the default theme:
+
+    ```bash
+    make preview-warm
+    ```
+
+    To use the Technical Notebook theme instead:
+
+    ```bash
+    make preview-technical
+    ```
+
+    The matching render commands are `make render-warm` and `make render-technical`. In CI, set `QUARTO_PROFILE=technical-notebook` to select the technical theme.
+
+6. **Register your publication**
 
     If you intend to publish your analysis, fill out the "*Kick off a new pub*" form on the AirTable [Publishing toolkit](https://airtable.com/appN7KQ55bT6HHfog/pagm69ti1kZK1GhBx).
 
-6. **Create your publication**
+7. **Create your publication**
 
     Edit `index.ipynb` to create your publication. As you work, you can render a live preview of your changes with:
 
@@ -43,6 +59,6 @@
 
     These files are all either necessary to build the publication or are automatically generated during the publication process.
 
-7. **Publishing**
+8. **Publishing**
 
     See the [Publishing Guide](PUBLISHING_GUIDE.md) for complete instructions on the publishing process.

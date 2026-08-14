@@ -1,5 +1,5 @@
-title: Arcadia Pub Theme
-author: Arcadia Science
+title: Surrogate Science Publication Theme
+author: Surrogate Science
 version: 1.1.0
 quarto-required: ">=1.4.0"
 contributes:
@@ -14,7 +14,7 @@ contributes:
         - file: includes/mini-title.html
         - file: includes/version-in-title.html
         - file: includes/citation-box.html
-      highlight-style: arcadia-light.theme
+      highlight-style: surrogate-light.theme
       page-layout: article
       title-block-banner: true
       toc: true

@@ -1,0 +1,4 @@
+format:
+  Arcadia-Science/arcadia-pub-theme-html:
+    body-classes: surrogate-warm-journal
+    css: _extensions/Arcadia-Science/arcadia-pub-theme/css/themes/warm-journal.css

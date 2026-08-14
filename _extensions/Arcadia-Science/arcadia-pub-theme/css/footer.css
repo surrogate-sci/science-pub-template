@@ -5,3 +5,9 @@
     margin-top: 4rem;
     width: 100%;
 }
+
+.footer img {
+    padding: 0.25rem;
+    background: var(--surrogate-paper);
+    border-radius: 0.6rem;
+}

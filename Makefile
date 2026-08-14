@@ -30,12 +30,24 @@ execute:
 preview:
 	quarto preview
 
+.PHONY: preview-warm
+preview-warm:
+	quarto preview --profile warm-journal
+
+.PHONY: preview-technical
+preview-technical:
+	quarto preview --profile technical-notebook
+
+.PHONY: render-warm
+render-warm:
+	quarto render --profile warm-journal
+
+.PHONY: render-technical
+render-technical:
+	quarto render --profile technical-notebook
+
 .PHONY: execute-demo
 execute-demo:
 	# This command is only necessary when changes are made to the demo notebook
 	# for development of the notebook pub template.
 	quarto render examples/demo.ipynb --execute
-
-.PHONY: update-theme
-update-theme:
-	quarto update extension Arcadia-Science/notebook-pub-theme --no-prompt
