@@ -50,3 +50,11 @@ def test_arcadia_updater_cannot_overwrite_custom_theme():
         path.read_text() for path in (ROOT / ".github/workflows").glob("*.yml")
     )
     assert "Arcadia-Science/notebook-pub-theme" not in active_automation
+
+
+def test_cookie_banner_controls_use_brand_tokens():
+    main = (THEME / "css/main.css").read_text()
+    assert ".cc-nb-okagree" in main
+    assert ".cc-nb-changep" in main
+    assert "var(--surrogate-teal)" in main
+    assert "var(--surrogate-paper)" in main
