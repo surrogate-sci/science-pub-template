@@ -1,6 +1,5 @@
-from pathlib import Path
 import re
-
+from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
 THEME = ROOT / "_extensions/Arcadia-Science/arcadia-pub-theme"
@@ -16,9 +15,7 @@ def test_active_css_uses_only_approved_hex_palette():
 
 def test_syntax_highlighter_uses_only_approved_palette():
     syntax_theme = (THEME / "surrogate-light.theme").read_text()
-    found = {
-        value.upper() for value in re.findall(r"#[0-9a-fA-F]{3,8}\b", syntax_theme)
-    }
+    found = {value.upper() for value in re.findall(r"#[0-9a-fA-F]{3,8}\b", syntax_theme)}
     assert found <= ALLOWED
 
 
@@ -34,9 +31,7 @@ def test_theme_profiles_are_mutually_exclusive_and_default_to_warm():
     assert "default: warm-journal" in base
     assert "- [warm-journal, technical-notebook]" in base
     assert "warm-journal.css" in (ROOT / "_quarto-warm-journal.yml").read_text()
-    assert "technical-notebook.css" in (
-        ROOT / "_quarto-technical-notebook.yml"
-    ).read_text()
+    assert "technical-notebook.css" in (ROOT / "_quarto-technical-notebook.yml").read_text()
 
 
 def test_active_logo_is_transparent():
