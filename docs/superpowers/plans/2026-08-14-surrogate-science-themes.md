@@ -202,6 +202,8 @@ Expected: PASS.
 - Modify: `README.md`
 - Modify: `developer-docs/QUICKSTART.md`
 - Modify: `Makefile`
+- Delete: `.github/workflows/check-theme-updates.yml`
+- Delete: `.github/workflows/publish-theme-change.yml`
 
 - [ ] **Step 1: Add explicit preview and render commands**
 
@@ -218,6 +220,8 @@ render-warm:
 render-technical:
 	quarto render --profile technical-notebook
 ```
+
+Remove the Arcadia extension update target and the two Arcadia reusable-workflow wrappers so they cannot overwrite the custom Surrogate theme.
 
 - [ ] **Step 2: Explain that Warm Journal is the default and Technical Notebook is opt-in**
 

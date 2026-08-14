@@ -42,3 +42,11 @@ def test_theme_profiles_are_mutually_exclusive_and_default_to_warm():
 def test_active_logo_is_transparent():
     logo = (THEME / "assets/logo_surrogate_mark.svg").read_text()
     assert "<rect" not in logo
+
+
+def test_arcadia_updater_cannot_overwrite_custom_theme():
+    active_automation = (ROOT / "Makefile").read_text()
+    active_automation += "\n".join(
+        path.read_text() for path in (ROOT / ".github/workflows").glob("*.yml")
+    )
+    assert "Arcadia-Science/notebook-pub-theme" not in active_automation
