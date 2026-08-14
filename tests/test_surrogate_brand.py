@@ -14,6 +14,14 @@ def test_active_css_uses_only_approved_hex_palette():
     assert not re.findall(r":\s*(?:white|black)\b", css, flags=re.IGNORECASE)
 
 
+def test_syntax_highlighter_uses_only_approved_palette():
+    syntax_theme = (THEME / "surrogate-light.theme").read_text()
+    found = {
+        value.upper() for value in re.findall(r"#[0-9a-fA-F]{3,8}\b", syntax_theme)
+    }
+    assert found <= ALLOWED
+
+
 def test_typography_uses_approved_families():
     fonts = (THEME / "includes/fonts.html").read_text()
     main = (THEME / "css/main.css").read_text()

@@ -178,12 +178,19 @@ format:
 - Modify: `_extensions/Arcadia-Science/arcadia-pub-theme/css/frontmatter.css`
 - Modify: `_extensions/Arcadia-Science/arcadia-pub-theme/css/citation-box.css`
 - Modify: `_extensions/Arcadia-Science/arcadia-pub-theme/css/footer.css`
+- Create: `_extensions/Arcadia-Science/arcadia-pub-theme/surrogate-light.theme`
+- Delete: `_extensions/Arcadia-Science/arcadia-pub-theme/arcadia-light.theme`
+- Modify: `_extensions/Arcadia-Science/arcadia-pub-theme/_extension.yml`
 
 - [ ] **Step 1: Replace literal white, gray, blue, and black values with canonical variables**
 
 Use the five tokens directly or alpha/color-mix derivatives of those tokens. Do not introduce a sixth named or hex color.
 
-- [ ] **Step 2: Run the visual contract tests**
+- [ ] **Step 2: Replace the Arcadia syntax theme with a five-color Surrogate syntax theme**
+
+Map normal text to Charcoal, keywords and operators to Surrogate teal, functions and constants to Signal orange, strings to Amber, and code backgrounds to Paper.
+
+- [ ] **Step 3: Run the visual contract tests**
 
 Run: `uv run --with pytest pytest tests/test_surrogate_brand.py -q`
 
