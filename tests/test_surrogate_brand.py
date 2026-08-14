@@ -9,8 +9,9 @@ ALLOWED = {"#F5F0E2", "#235F66", "#F28A1C", "#FFB83E", "#30332F"}
 
 def test_active_css_uses_only_approved_hex_palette():
     css = "\n".join(path.read_text() for path in (THEME / "css").rglob("*.css"))
-    found = {value.upper() for value in re.findall(r"#[0-9a-fA-F]{6}", css)}
+    found = {value.upper() for value in re.findall(r"#[0-9a-fA-F]{3,8}\b", css)}
     assert found == ALLOWED
+    assert not re.findall(r":\s*(?:white|black)\b", css, flags=re.IGNORECASE)
 
 
 def test_typography_uses_approved_families():
