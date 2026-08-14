@@ -20,9 +20,12 @@
     const abstract = document.querySelector('.abstract');
     const navbar = document.querySelector('#quarto-header');
 
-    // Project sites can be served from a repository subpath.
-    const siteRoot = (window.location.hostname.endsWith('github.io')) ? `/${window.location.pathname.split('/')[1]}` : '';
-    const themeAssets = `${siteRoot}/site_libs/quarto-contrib/quarto-project/surrogate-sci/ss-pub-theme/assets`;
+    // Resolve project resources from Quarto's relative offset, preserving custom domains.
+    const quartoOffset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
+    const themeAssets = new URL(
+      `${quartoOffset}site_libs/quarto-contrib/quarto-project/surrogate-sci/ss-pub-theme/assets/`,
+      document.baseURI
+    ).href.replace(/\/$/, '');
     template.content.querySelector('.logo-white').src = `${themeAssets}/logo_surrogate_mark.svg`;
 
     let prevRatio = {appear: 1, disappear: 1};

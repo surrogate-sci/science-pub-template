@@ -91,7 +91,8 @@ def test_template_metadata_uses_reusable_surrogate_placeholders():
     assert "Surrogate Science Publication Template" in citation
     assert "[AUTHOR" in citation
     assert "doi:" not in citation.lower()
-    assert "repository-code: https://github.com/surrogate-sci/science-pub-template" in citation
+    assert "repository-code: https://github.com/surrogate-sci/[REPOSITORY-NAME]" in citation
+    assert "science-pub-template" not in citation
     assert "Copyright (c) 2024 Arcadia Science" in license_text
     assert "Copyright (c) 2026 Surrogate Science" in license_text
 
@@ -133,3 +134,42 @@ def test_note_callout_icon_does_not_use_bootstrap_blue():
     assert pseudo
     assert "background-image: none" in pseudo.group("body")
     assert "var(--surrogate-teal)" in article
+
+
+def test_citation_box_omits_missing_cff_year_and_doi_without_undefined_values():
+    citation = (ROOT / "CITATION.cff").read_text()
+    citation_box = (THEME / "includes/citation-box.html").read_text()
+
+    assert "year:" not in citation
+    assert "doi:" not in citation.lower()
+    assert "String(year)" not in citation_box
+    assert "String(doi)" not in citation_box
+    assert "const valueOrEmpty" in citation_box
+    assert "pubData.year ?" in citation_box
+    assert "pubData.doi ?" in citation_box
+    assert "...(pubData.doi ? [`doi = {${pubData.doi}}`] : [])" in citation_box
+    assert "valueOrEmpty(cffData['repository-code'])" in citation_box
+
+
+def test_includes_resolve_project_resources_from_quarto_offset_and_base_uri():
+    for include_name in ("citation-box.html", "author-reveal.html", "mini-title.html"):
+        include = (THEME / "includes" / include_name).read_text()
+
+        assert 'meta[name="quarto:offset"]' in include
+        assert "document.baseURI" in include
+        assert "github.io" not in include
+        assert "window.location.hostname" not in include
+
+
+def test_active_template_uses_the_canonical_science_pub_template_name():
+    active_paths = [
+        ROOT / "pyproject.toml",
+        ROOT / "uv.lock",
+        *(ROOT / "developer-docs").glob("*.md"),
+        ROOT / "index.ipynb",
+        ROOT / "examples/demo.ipynb",
+    ]
+    active_text = "\n".join(path.read_text() for path in active_paths)
+
+    assert "notebook-pub-template" not in active_text
+    assert 'name = "science-pub-template"' in (ROOT / "pyproject.toml").read_text()

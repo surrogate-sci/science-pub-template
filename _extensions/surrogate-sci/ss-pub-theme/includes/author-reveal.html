@@ -31,9 +31,9 @@
       // Function to load the YAML file
       async function loadAuthorData() {
         try {
-          // Project sites can be served from a repository subpath.
-          const siteRoot = (window.location.hostname.endsWith('github.io')) ? `/${window.location.pathname.split('/')[1]}` : '';
-          const authorYamlPath = `${siteRoot}/authors.yml`;
+          // Resolve project resources from Quarto's relative offset, preserving custom domains.
+          const quartoOffset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
+          const authorYamlPath = new URL(`${quartoOffset}authors.yml`, document.baseURI).href;
           const response = await fetch(authorYamlPath);
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);

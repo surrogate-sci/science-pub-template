@@ -77,30 +77,40 @@
         styledEl.innerHTML = `<p class="loading-text">Loading citation...</p>`;
         bibtexEl.innerHTML = `<pre class="loading-text">Loading citation...</pre>`;
 
-        // Fetch and parse CFF
-        const siteRoot = (window.location.hostname.endsWith('github.io')) ? `/${window.location.pathname.split('/')[1]}` : '';
-        const citationCffPath = `${siteRoot}/CITATION.cff`;
+        // Resolve project resources from Quarto's relative offset, preserving custom domains.
+        const quartoOffset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
+        const projectUrl = path => new URL(`${quartoOffset}${path}`, document.baseURI).href;
+        const citationCffPath = projectUrl('CITATION.cff');
         const response = await fetch(citationCffPath);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const text = await response.text();
         const cffData = jsyaml.load(text);
 
-        const preferredCitation = cffData['preferred-citation'];
-        const title = preferredCitation.title;
-        const year = preferredCitation.year;
-        const doi = preferredCitation.doi;
-        const authors = preferredCitation.authors;
+        const preferredCitation = cffData['preferred-citation'] || cffData;
+        const valueOrEmpty = value => value == null ? '' : String(value).trim();
+        const title = valueOrEmpty(preferredCitation.title);
+        const year = valueOrEmpty(preferredCitation.year);
+        const doi = valueOrEmpty(preferredCitation.doi);
+        const authors = preferredCitation.authors || cffData.authors || [];
+        const url = valueOrEmpty(preferredCitation.url)
+          || valueOrEmpty(cffData.url)
+          || valueOrEmpty(cffData['repository-code'])
+          || projectUrl('');
 
         pubData = {
-          title: String(title).trim(),
-          year: String(year).trim(),
-          doi: String(doi).trim(),
+          title,
+          year,
+          doi,
+          url,
           authors: []
         };
 
         for (const author of authors) {
           pubData.authors.push({
-            family: String(author['family-names']).trim(),
-            given: String(author['given-names']).trim()
+            family: valueOrEmpty(author['family-names']),
+            given: valueOrEmpty(author['given-names'])
           });
         }
 
@@ -109,28 +119,35 @@
       }
 
       function updateCitations() {
-        const url = pubData.doi ? `https://doi.org/${pubData.doi}` : window.location.href;
+        const url = pubData.doi ? `https://doi.org/${pubData.doi}` : pubData.url;
 
         // Text citation
         const styledAuthors = pubData.authors.map(author => {
           const initials = author.given.split(/\s+/).map(name => name.charAt(0)).join('');
           return `${author.family} ${initials}`;
         }).join(', ');
-        styledEl.innerHTML = `<p>${styledAuthors}. (${pubData.year}). ${pubData.title}. ${url}</p>`;
+        const yearText = pubData.year ? ` (${pubData.year})` : '';
+        const titleText = pubData.title ? `. ${pubData.title}` : '';
+        const urlText = url ? `. ${url}` : '';
+        styledEl.innerHTML = `<p>${styledAuthors}${yearText}${titleText}${urlText}</p>`;
 
         // BibTeX citation
-        const firstAuthor = pubData.authors[0]; // Assume at least one author
+        const firstAuthor = pubData.authors[0] || { family: 'Author', given: '' };
         const bibtexKey = `${firstAuthor.family.replace(/[^a-zA-Z0-9]/g, '')}${pubData.year}${pubData.title.split(' ')[0].replace(/[^a-zA-Z0-9]/g, '')}`;
         const escapedTitle = pubData.title.replace(/([{}])/g, '\\$1');
         const titleWithCaps = escapedTitle.replace(/\b([A-Z][a-zA-Z0-9'-]*)\b/g, '{$1}');
         const bibtexAuthors = pubData.authors.map(author => `${author.family}, ${author.given}`).join(' and ');
 
+        const bibtexFields = [
+          `author = {${bibtexAuthors}}`,
+          `title = {${titleWithCaps}}`,
+          'journal = {Surrogate Science}',
+          ...(pubData.year ? [`year = {${pubData.year}}`] : []),
+          ...(pubData.doi ? [`doi = {${pubData.doi}}`] : []),
+          ...(url ? [`url = {${url}}`] : [])
+        ];
         const bibtexContentFinal = `@article{${bibtexKey},
-    author = {${bibtexAuthors}},
-    title = {${titleWithCaps}},
-    journal = {Surrogate Science},
-    year = {${pubData.year}},${pubData.doi ? `\n    doi = {${pubData.doi}},` : ''}
-    url = {${url}}
+    ${bibtexFields.join(',\n    ')}
 }`;
         bibtexEl.innerHTML = `<pre>${bibtexContentFinal}</pre>`;
       }

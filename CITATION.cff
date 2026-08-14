@@ -5,7 +5,7 @@ authors:
   - family-names: "[AUTHOR FAMILY NAME]"
     given-names: "[AUTHOR GIVEN NAME]"
     affiliation: Surrogate Science
-repository-code: https://github.com/surrogate-sci/science-pub-template
+repository-code: https://github.com/surrogate-sci/[REPOSITORY-NAME]
 url: https://surrogate-sci.dev/[REPOSITORY-NAME]/
 preferred-citation:
   type: article
