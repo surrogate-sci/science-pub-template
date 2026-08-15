@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "[PUBLICATION TITLE] –",
     "section": "",
-    "text": "NoteAI usage disclosure\n\n\n\n\n\nThis is a placeholder for the AI usage disclosure. Once all authors sign the AI code form on Airtable, SlackBot will message you an AI disclosure that you should place here."
+    "text": "NoteAI usage disclosure\n\n\n\n\n\nAI usage disclosure incomplete. Before submission or release, complete ai-use.yml. Every first and last author must describe their exact AI usage, and every remaining author must read the complete disclosure and confirm it in that file."
   },
   {
     "objectID": "index.html#purpose",

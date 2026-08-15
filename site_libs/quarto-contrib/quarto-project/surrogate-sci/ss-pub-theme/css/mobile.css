@@ -12,8 +12,8 @@
     display: none !important;
   }
 
-  .surrogate-warm-journal .navbar-brand::after,
-  .surrogate-technical-notebook .navbar-brand::after {
+  .surrogate-warm-journal .navbar-title,
+  .surrogate-technical-notebook .navbar-title {
     font-size: 1rem;
     letter-spacing: 0.02em;
   }

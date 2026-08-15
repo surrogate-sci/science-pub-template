@@ -15,8 +15,7 @@
   gap: 0.65rem;
 }
 
-.surrogate-warm-journal .navbar-brand::after {
-  content: "SURROGATE SCIENCE";
+.surrogate-warm-journal .navbar-title {
   color: var(--surrogate-charcoal);
   font-family: var(--nb-font-serif);
   font-size: 1.15rem;
@@ -26,6 +25,8 @@
 }
 
 .surrogate-warm-journal .navbar-logo {
+  width: 2.8rem;
+  height: 2.8rem;
   max-height: 2.8rem;
 }
 

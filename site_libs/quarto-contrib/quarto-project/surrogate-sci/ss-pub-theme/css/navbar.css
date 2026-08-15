@@ -119,6 +119,20 @@ body:not(:has(.abstract)) .navbar-nav .nav-item:has(iconify-icon[icon="nrk:back"
   display: block;
 }
 
+@media (min-width: 641px) {
+  .navbar-brand-container {
+    width: auto;
+    max-width: none;
+    flex: 0 0 auto;
+  }
+
+  .navbar-brand {
+    max-width: none;
+    flex: 0 0 auto;
+    overflow: visible;
+  }
+}
+
 .menu-text {
     color: var(--surrogate-charcoal) !important;
 }

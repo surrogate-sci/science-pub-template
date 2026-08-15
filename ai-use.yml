@@ -1,0 +1,20 @@
+# Complete this file before submitting or releasing the manuscript.
+# See developer-docs/AI_USAGE.md for instructions and policy.
+schema_version: 1
+status: draft
+manuscript: "[PUBLICATION TITLE]"
+
+# Include every first author, including co-first authors.
+first_authors:
+  - name: "[FIRST AUTHOR NAME]"
+    statement: ""
+
+# Include every last/senior author, including co-last or co-senior authors.
+last_authors:
+  - name: "[LAST AUTHOR NAME]"
+    statement: ""
+
+# Every remaining author must read the complete disclosure and confirm that here.
+other_authors:
+  - name: "[OTHER AUTHOR NAME]"
+    reviewed_full_disclosure: false
