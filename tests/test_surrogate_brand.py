@@ -39,6 +39,16 @@ def test_active_logo_is_transparent():
     assert "<rect" not in logo
 
 
+def test_active_logo_is_compact_and_uses_the_approved_palette():
+    logo_path = THEME / "assets/logo_surrogate_mark.svg"
+    logo = logo_path.read_text()
+    found = {value.upper() for value in re.findall(r"#[0-9a-fA-F]{3,8}\b", logo)}
+
+    assert found == ALLOWED
+    assert "rgb(" not in logo
+    assert logo_path.stat().st_size < 100_000
+
+
 def test_no_upstream_theme_updater_can_overwrite_custom_theme():
     active_automation = (ROOT / "Makefile").read_text()
     active_automation += "\n".join(
