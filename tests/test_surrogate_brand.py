@@ -173,3 +173,16 @@ def test_active_template_uses_the_canonical_science_pub_template_name():
 
     assert "notebook-pub-template" not in active_text
     assert 'name = "science-pub-template"' in (ROOT / "pyproject.toml").read_text()
+
+
+def test_documented_environment_installs_make_test_dependencies():
+    environment = (ROOT / "env.yml").read_text()
+
+    assert re.search(r"^\s*- pytest(?:[=<>]|$)", environment, flags=re.MULTILINE)
+
+
+def test_quickstart_does_not_copy_development_branches():
+    quickstart = (ROOT / "developer-docs/QUICKSTART.md").read_text()
+
+    assert "check the box" not in quickstart
+    assert "Leave *Include all branches* unchecked" in quickstart
