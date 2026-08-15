@@ -3,8 +3,8 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--arcadia-pewter);
-  color: white;
+  background-color: var(--surrogate-teal);
+  color: var(--surrogate-paper);
   z-index: 1020;
   height: var(--mini-title-height);
   transform: translateY(-100%);
@@ -86,7 +86,7 @@
 }
 
 #mini-version-control .nav-link {
-  color: white;
+  color: var(--surrogate-paper);
   padding: 0;
 }
 

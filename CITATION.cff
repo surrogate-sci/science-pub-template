@@ -1,39 +1,16 @@
 cff-version: 1.2.0
-message: If you use this software, please cite the associated publication.
-title: This is the notebook pub demo
-doi: 10.57844/arcadia-fake-doi
+message: If you use this publication, please cite it using the completed metadata below.
+title: "[PUBLICATION TITLE] — Surrogate Science Publication Template"
 authors:
-- family-names: Author
-  given-names: Test
-  affiliation: Arcadia Science
-  orcid: https://orcid.org/0000-0000-0000-0000
-- family-names: Author
-  given-names: Another Test
-  affiliation: Arcadia Science
-  orcid: https://orcid.org/0009-0000-0000-0000
-- family-names: Author
-  given-names: Yet Another Test
-  affiliation: Arcadia Science
-  orcid: https://orcid.org/0000-0000-0000-0000
-- family-names: Author
-  given-names: Final
-  affiliation: Arcadia Science
-  orcid: https://orcid.org/0000-0000-0000-0000
+  - family-names: "[AUTHOR FAMILY NAME]"
+    given-names: "[AUTHOR GIVEN NAME]"
+    affiliation: Surrogate Science
+repository-code: https://github.com/surrogate-sci/[REPOSITORY-NAME]
+url: https://surrogate-sci.dev/[REPOSITORY-NAME]/
 preferred-citation:
-  title: This is the notebook pub demo
   type: article
-  doi: 10.57844/arcadia-fake-doi
+  title: "[PUBLICATION TITLE] — Surrogate Science Publication Template"
   authors:
-  - family-names: Author
-    given-names: Test
-    affiliation: Arcadia Science
-    orcid: https://orcid.org/0000-0000-0000-0000
-  - family-names: Author
-    given-names: Another Test
-    affiliation: Arcadia Science
-    orcid: https://orcid.org/0000-0000-0000-0000
-  - family-names: Author
-    given-names: Yet Another Test
-    affiliation: Arcadia Science
-    orcid: https://orcid.org/0000-0000-0000-0000
-  year: 2025
+    - family-names: "[AUTHOR FAMILY NAME]"
+      given-names: "[AUTHOR GIVEN NAME]"
+      affiliation: Surrogate Science

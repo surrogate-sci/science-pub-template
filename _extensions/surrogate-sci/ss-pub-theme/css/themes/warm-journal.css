@@ -1,0 +1,80 @@
+/* Theme A: Warm Journal */
+.surrogate-warm-journal {
+  background: var(--surrogate-paper);
+  color: var(--surrogate-charcoal);
+}
+
+.surrogate-warm-journal .navbar {
+  background: var(--surrogate-paper) !important;
+  border-bottom: 1px solid var(--surrogate-charcoal-20);
+}
+
+.surrogate-warm-journal .navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.surrogate-warm-journal .navbar-brand::after {
+  content: "SURROGATE SCIENCE";
+  color: var(--surrogate-charcoal);
+  font-family: var(--nb-font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.surrogate-warm-journal .navbar-logo {
+  max-height: 2.8rem;
+}
+
+.surrogate-warm-journal .quarto-title-banner {
+  background: var(--surrogate-paper) !important;
+  border-bottom: 1px solid var(--surrogate-charcoal-20);
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.surrogate-warm-journal .quarto-title-banner h1,
+.surrogate-warm-journal h1.title {
+  max-width: 62rem;
+  color: var(--surrogate-charcoal) !important;
+  font-family: var(--nb-font-serif) !important;
+  font-size: clamp(3rem, 6vw, 5.25rem) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+
+.surrogate-warm-journal h2 {
+  font-family: var(--nb-font-serif) !important;
+  font-weight: 600 !important;
+}
+
+.surrogate-warm-journal .quarto-title-meta-heading,
+.surrogate-warm-journal .abstract .block-title,
+.surrogate-warm-journal figcaption,
+.surrogate-warm-journal .figure-caption {
+  color: var(--surrogate-teal) !important;
+  font-family: var(--nb-font-label) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.surrogate-warm-journal .mini-title {
+  background: var(--surrogate-teal);
+  color: var(--surrogate-paper);
+}
+
+.surrogate-warm-journal a {
+  color: var(--surrogate-teal);
+}
+
+.surrogate-warm-journal a:hover {
+  color: var(--surrogate-orange);
+}
+
+.surrogate-warm-journal blockquote {
+  border-left: 0.35rem solid var(--surrogate-orange);
+}

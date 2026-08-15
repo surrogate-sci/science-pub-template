@@ -1,6 +1,6 @@
 [project]
-name = "notebook-pub-contents"
-description = "Python project for notebook publication."
+name = "science-pub-template"
+description = "Python project for the Surrogate Science publication template."
 version = "0.0.0"
 readme = "README.md"
 requires-python = ">=3.10"

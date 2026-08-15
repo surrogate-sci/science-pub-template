@@ -6,7 +6,7 @@ comments: false
 
 ## What is this?
 
-This *notebook publication* uses a format we're experimenting with that treats a scientist's working computational analysis as the publication itself, dissolving the separation that exists between code and publication. Our hypothesis is that this lets us publish faster, promote early-stage work, and increase reproducibility. For details, see [our commentary](https://doi.org/10.57844/arcadia-ca21-23bb) on notebook publications.
+This *notebook publication* treats a computational analysis as a publication: the narrative, code, figures, and execution environment live together in one repository. This format supports transparent methods and reproducible results.
 
 ## How can I comment?
 

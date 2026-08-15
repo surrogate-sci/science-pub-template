@@ -9,7 +9,7 @@ This directory contains documentation for developers who maintain or use the not
 - [Publishing Guide](PUBLISHING_GUIDE.md): How to publish your notebook publication.
 - [Template Architecture](TEMPLATE_ARCHITECTURE.md): Technical details about the structure and components of this template repository.
 - [GitHub Actions](GITHUB_ACTIONS.md): Technical details about the GitHub Actions workflows that are used to build and publish the notebook publications.
-- [Template Development](TEMPLATE_DEVELOPMENT.md): Guide for developing the notebook-pub-template itself (extensions, demo notebook, `_quarto.yml`).
+- [Template Development](TEMPLATE_DEVELOPMENT.md): Guide for developing the science-pub-template itself (extensions, demo notebook, `_quarto.yml`).
 
 ## Purpose
 

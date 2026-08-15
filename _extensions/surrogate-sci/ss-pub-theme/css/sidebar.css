@@ -24,15 +24,15 @@ body.mini-title-visible.navbar-visible #quarto-margin-sidebar {
 }
 
 .sidebar nav[role=doc-toc] ul>li>a.active, .sidebar nav[role=doc-toc] ul>li>ul>li>a.active {
-    border-left: 2px solid var(--arcadia-dusk);
-    color: var(--arcadia-dusk) !important;
+    border-left: 2px solid var(--surrogate-teal);
+    color: var(--surrogate-teal) !important;
     font-weight: 500;
 }
 
 .sidebar nav[role=doc-toc] ul>li>a:hover,
 .sidebar nav[role=doc-toc] ul>li>ul>li>a:hover {
-    border-left: 2px solid var(--arcadia-link-color);
-    color: var(--arcadia-link-color) !important;
+    border-left: 2px solid var(--surrogate-link-color);
+    color: var(--surrogate-link-color) !important;
     opacity: 0.8;
     transition: all 0.2s ease;
 }

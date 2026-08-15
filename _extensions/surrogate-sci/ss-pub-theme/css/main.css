@@ -1,0 +1,50 @@
+/* Import other CSS files */
+@import url("./navbar.css");
+@import url("./mini-title.css");
+@import url("./frontmatter.css");
+@import url("./sidebar.css");
+@import url("./article.css");
+@import url("./footer.css");
+@import url("./colors.css");
+@import url("./grid.css");
+
+:root {
+  --nb-font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --nb-font-sans: "Assistant", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --nb-font-label: "Fira Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --nb-font-mono: "Fira Mono", ui-monospace, SFMono-Regular, "SF Mono", Consolas, monospace;
+  --nb-h1-font-size: 2.5rem;
+  --nb-h2-font-size: 2rem;
+  --nb-toc-title-font-size: 1.2rem;
+  --bs-code-color: var(--surrogate-teal);
+  --bs-code-bg-color: color-mix(in srgb, var(--surrogate-paper) 92%, var(--surrogate-charcoal));
+  --bs-code-border-color: var(--surrogate-charcoal-20);
+  --bs-code-left-border-color: rgba(35, 95, 102, 0.6);
+  --bs-link-color-rgb: var(--surrogate-teal);
+
+  --callout-note-rgb: var(--surrogate-teal);
+  --callout-warning-rgb: var(--surrogate-amber);
+  --callout-important-rgb: var(--surrogate-orange);
+  --callout-tip-rgb: var(--surrogate-teal);
+  --callout-caution-rgb: var(--surrogate-orange);
+}
+
+/* Quarto's cookie-consent component ships its own green/gray palette. */
+.termsfeed-com---palette-light .cc-nb-main-container,
+.termsfeed-com---palette-light .cc-cp-container,
+.termsfeed-com---palette-light .cc-cp-body-content {
+  background: var(--surrogate-paper) !important;
+  color: var(--surrogate-charcoal) !important;
+}
+
+.termsfeed-com---palette-light .cc-nb-okagree,
+.termsfeed-com---palette-light .cc-cp-foot-save {
+  background: var(--surrogate-teal) !important;
+  color: var(--surrogate-paper) !important;
+}
+
+.termsfeed-com---palette-light .cc-nb-changep {
+  border: 1px solid var(--surrogate-charcoal-20) !important;
+  background: var(--surrogate-paper) !important;
+  color: var(--surrogate-charcoal) !important;
+}

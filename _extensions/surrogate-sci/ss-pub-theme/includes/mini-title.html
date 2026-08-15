@@ -2,7 +2,7 @@
   <div class="mini-title page-columns page-full">
     <div class="mini-title-content">
       <div class="mini-title-logo-wrapper">
-        <a href="https://research.arcadiascience.com/">
+        <a href="https://github.com/surrogate-sci">
           <img class="logo-white" src="" alt="Logo">
         </a>
       </div>
@@ -20,11 +20,13 @@
     const abstract = document.querySelector('.abstract');
     const navbar = document.querySelector('#quarto-header');
 
-    // Github Pages sites are served from a path like `https://arcadia-science.github.io/<repo>/`
-    // so we need to add the repo name to the path when we're on Github Pages.
-    const siteRoot = (window.location.hostname.endsWith('github.io')) ? `/${window.location.pathname.split('/')[1]}` : '';
-    const themeAssets = `${siteRoot}/site_libs/quarto-contrib/quarto-project/Arcadia-Science/arcadia-pub-theme/assets`;
-    template.content.querySelector('.logo-white').src = `${themeAssets}/logo_white.png`;
+    // Resolve project resources from Quarto's relative offset, preserving custom domains.
+    const quartoOffset = document.querySelector('meta[name="quarto:offset"]')?.content || './';
+    const themeAssets = new URL(
+      `${quartoOffset}site_libs/quarto-contrib/quarto-project/surrogate-sci/ss-pub-theme/assets/`,
+      document.baseURI
+    ).href.replace(/\/$/, '');
+    template.content.querySelector('.logo-white').src = `${themeAssets}/logo_surrogate_mark.svg`;
 
     let prevRatio = {appear: 1, disappear: 1};
 

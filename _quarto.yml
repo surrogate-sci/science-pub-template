@@ -8,10 +8,14 @@ project:
   resources:
   - authors.yml
   - CITATION.cff
+profile:
+  default: warm-journal
+  group:
+    - [warm-journal, technical-notebook]
 execute:
   freeze: auto
 website:
-  favicon: "_extensions/Arcadia-Science/arcadia-pub-theme/assets/logo_white.png"
+  favicon: "_extensions/surrogate-sci/ss-pub-theme/assets/logo_surrogate_mark.svg"
   twitter-card: true
   open-graph: true
   navbar:
@@ -37,33 +41,29 @@ website:
     - text: Contribute
       href: pages/CONTRIBUTING.qmd
     tools:
-    - icon: twitter-x
-      href: https://twitter.com/arcadiascience
     - icon: github
       href: https://github.com/{{< var pub.org >}}/{{< var pub.repo >}}
-    logo: "_extensions/Arcadia-Science/arcadia-pub-theme/assets/logo_text.png"
-    logo-href: https://research.arcadiascience.com/
-    background: white
+    logo: "_extensions/surrogate-sci/ss-pub-theme/assets/logo_surrogate_mark.svg"
+    logo-href: https://github.com/surrogate-sci
+    background: '#F5F0E2'
     search: true
   page-footer:
-    background: '#484B50'
+    background: '#30332F'
     border: false
-    left: '[![](/_extensions/Arcadia-Science/arcadia-pub-theme/assets/logo_white.png){fig-alt="Arcadia-Science" width=65px}](https://www.arcadiascience.com/)
+    left: '[![](/_extensions/surrogate-sci/ss-pub-theme/assets/logo_surrogate_mark.svg){fig-alt="Surrogate Science" width=65px}](https://github.com/surrogate-sci)
 
-      Copyright 2026, Arcadia Science
+      Copyright 2026, Surrogate Science
 
       '
     right:
-    - icon: twitter-x
-      href: https://twitter.com/arcadiascience
     - icon: github
-      href: https://github.com/Arcadia-Science
+      href: https://github.com/surrogate-sci
   google-analytics: '{{< var pub.google_analytics_id >}}'
   cookie-consent:
     type: implied
     style: simple
 format:
-  Arcadia-Science/arcadia-pub-theme-html:
+  surrogate-sci/ss-pub-theme-html:
     html-math-method: katex
 shortcodes:
 - _extensions/mcanouil/iconify/iconify.lua
@@ -73,11 +73,11 @@ filters:
 - _extensions/filter-warnings/filter-warnings.lua
 comments:
   giscus:
-    repo: Arcadia-Science/notebook-pub-template
+    repo: surrogate-sci/science-pub-template
     input-position: top
 reference-location: margin
 bibliography: ref.bib
-csl: "_extensions/Arcadia-Science/arcadia-pub-theme/assets/arcadia.csl"
+csl: "_extensions/surrogate-sci/ss-pub-theme/assets/surrogate-science.csl"
 code-annotations: hover
 html-table-processing: none
 demo-title: A brief syntax demo

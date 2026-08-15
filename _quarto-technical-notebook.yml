@@ -1,0 +1,4 @@
+format:
+  surrogate-sci/ss-pub-theme-html:
+    body-classes: surrogate-technical-notebook
+    css: _extensions/surrogate-sci/ss-pub-theme/css/themes/technical-notebook.css
