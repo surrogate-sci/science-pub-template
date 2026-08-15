@@ -115,12 +115,49 @@ def test_active_documentation_has_no_arcadia_operations_or_urls():
     assert "https://surrogate-sci.dev/" in active_docs
 
 
-def test_cookie_banner_controls_use_brand_tokens():
-    main = (THEME / "css/main.css").read_text()
-    assert ".cc-nb-okagree" in main
-    assert ".cc-nb-changep" in main
-    assert "var(--surrogate-teal)" in main
-    assert "var(--surrogate-paper)" in main
+def test_tracking_and_comments_are_disabled_by_default():
+    config = (ROOT / "_quarto.yml").read_text()
+
+    assert "google-analytics:" not in config
+    assert "cookie-consent:" not in config
+    assert "comments:" not in config
+    assert "giscus:" not in config
+
+
+def test_optional_integrations_are_documented_without_being_enabled():
+    publishing = (ROOT / "developer-docs/PUBLISHING_GUIDE.md").read_text()
+
+    assert "Optional: enable comments with Giscus" in publishing
+    assert "Optional: enable analytics and cookie consent" in publishing
+    assert "repo-id:" in publishing
+    assert "category-id:" in publishing
+
+
+def test_mobile_layout_uses_a_text_wordmark_and_smaller_titles():
+    responsive = (THEME / "css/mobile.css").read_text()
+
+    assert "@media (max-width: 640px)" in responsive
+    assert ".navbar-logo" in responsive
+    assert "display: none" in responsive
+    assert ".mini-title-logo-wrapper" in responsive
+    assert "body.surrogate-warm-journal h1.title" in responsive
+    assert "body.surrogate-technical-notebook h1.title" in responsive
+    assert "font-size: clamp(2.35rem, 12vw, 2.75rem)" in responsive
+
+
+def test_main_branch_push_publishes_the_quarto_site():
+    publish = (ROOT / ".github/workflows/publish.yml").read_text()
+    architecture = (ROOT / "developer-docs/TEMPLATE_ARCHITECTURE.md").read_text()
+
+    assert "push:" in publish
+    assert "branches: [main]" in publish
+    assert "quarto-dev/quarto-actions/publish@v2" in publish
+    assert "target: gh-pages" in publish
+    assert "ref: publish" not in publish
+    assert not (ROOT / ".github/workflows/build.yml").exists()
+    assert not (ROOT / "_build.py").exists()
+    assert "publish branch" not in architecture
+    assert "`publish` branch" not in architecture
 
 
 def test_note_callout_icon_does_not_use_bootstrap_blue():
@@ -206,7 +243,4 @@ def test_public_template_excludes_internal_agent_artifacts():
 def test_readme_links_to_the_live_template_demo():
     readme = (ROOT / "README.md").read_text()
 
-    assert (
-        "[View the live demo](https://surrogate-sci.github.io/science-pub-template/)"
-        in readme
-    )
+    assert "[View the live demo](https://surrogate-sci.github.io/science-pub-template/)" in readme

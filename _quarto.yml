@@ -58,10 +58,6 @@ website:
     right:
     - icon: github
       href: https://github.com/surrogate-sci
-  google-analytics: '{{< var pub.google_analytics_id >}}'
-  cookie-consent:
-    type: implied
-    style: simple
 format:
   surrogate-sci/ss-pub-theme-html:
     html-math-method: katex
@@ -71,10 +67,6 @@ filters:
 - _extensions/pandoc-ext/abstract-section/abstract-section.lua
 - _extensions/mcanouil/collapse-output/collapse-output.lua
 - _extensions/filter-warnings/filter-warnings.lua
-comments:
-  giscus:
-    repo: surrogate-sci/science-pub-template
-    input-position: top
 reference-location: margin
 bibliography: ref.bib
 csl: "_extensions/surrogate-sci/ss-pub-theme/assets/surrogate-science.csl"

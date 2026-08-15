@@ -3,28 +3,23 @@
 
 on:
   workflow_dispatch:
-  pull_request:
-    types:
-      # Only run when a PR is closed (which includes merges).
-      - closed
-    branches:
-      - publish
+  push:
+    branches: [main]
 
 name: Quarto Publish
 
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
-  publish:
-    # Run when the workflow is manually triggered or when a PR is merged.
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+  build-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-        with:
-          # Ensure that the `publish` branch is checked out.
-          ref: publish
 
       # This is needed to create the `gh-pages` branch.
       - name: Set up Git user
@@ -42,11 +37,13 @@ jobs:
             git rm -rf --quiet .
             git commit --allow-empty -m "Initializing gh-pages branch"
             git push origin gh-pages
-            git checkout publish
+            git checkout --detach "$GITHUB_SHA"
           fi
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2

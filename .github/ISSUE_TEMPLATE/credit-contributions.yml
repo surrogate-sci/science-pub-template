@@ -1,0 +1,149 @@
+name: CRediT author contributions
+description: Collect author-approved contributions for a manuscript.
+title: "[CRediT]: "
+labels:
+  - authorship
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use the official CRediT roles below to record who contributed to the manuscript.
+
+  - type: input
+    id: manuscript
+    attributes:
+      label: Manuscript identifier or title
+      description: Provide the working title, DOI, preprint identifier, or another unique identifier.
+    validations:
+      required: true
+
+  - type: textarea
+    id: author_roster
+    attributes:
+      label: Ordered author roster
+      description: Enter the authors in publication order, one author per line.
+      placeholder: |-
+        Ada Lovelace
+        Grace Hopper
+    validations:
+      required: true
+
+  - type: textarea
+    id: conceptualization
+    attributes:
+      label: Conceptualization
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: data_curation
+    attributes:
+      label: Data curation
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: formal_analysis
+    attributes:
+      label: Formal analysis
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: funding_acquisition
+    attributes:
+      label: Funding acquisition
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: investigation
+    attributes:
+      label: Investigation
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: methodology
+    attributes:
+      label: Methodology
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: project_administration
+    attributes:
+      label: Project administration
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: resources
+    attributes:
+      label: Resources
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: software
+    attributes:
+      label: Software
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: supervision
+    attributes:
+      label: Supervision
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: visualization
+    attributes:
+      label: Visualization
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: writing_original_draft
+    attributes:
+      label: Writing – original draft
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: textarea
+    id: writing_review_editing
+    attributes:
+      label: Writing – review & editing
+      description: Enter one author per line, or N/A.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: author_approval
+    attributes:
+      label: Author approval confirmation
+      options:
+        - label: All authors reviewed and approved the contribution statement.
+          required: true

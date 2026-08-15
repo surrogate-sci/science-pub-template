@@ -74,7 +74,7 @@ These files are generated and should not be edited directly.
 2. **Rendering**: Quarto converts notebooks to HTML using configurations in `_quarto.yml`
 3. **Styling**: The `ss-pub-theme` extension provides CSS, interactive components, and brand assets
 4. **Output**: Final website is built in `_site/` and execution cache in `_freeze/`
-5. **Publishing**: GitHub Actions automate the publication process when merged to the `publish` branch
+5. **Publishing**: GitHub Actions render and publish the site to `gh-pages` whenever reviewed changes reach `main`
 
 ## Theme/Styling
 

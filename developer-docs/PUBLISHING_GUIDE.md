@@ -1,120 +1,62 @@
 # Publishing Guide
 
-This document provides a step-by-step explanation for publishing a notebook publication.
+This template publishes its Quarto site to GitHub Pages whenever a change reaches `main`.
 
-Instructions are provided for:
+## Initial setup
 
-* Publishing the initial publication
-* Publishing a revision
+1. In *Settings → Actions → General → Workflow permissions*, select **Read and write permissions**.
+2. Replace the placeholders in `CITATION.cff`, `authors.yml`, `_variables.yml`, and `README.md`.
+3. Render both supported profiles locally:
 
-## Steps for initial publication
+   ```bash
+   make render-warm
+   make render-technical
+   ```
 
-1. **Configure GitHub Actions and GitHub Pages settings**
+4. Merge the reviewed publication changes into `main`. The **Quarto Publish** workflow renders the default profile and pushes the generated site to `gh-pages`.
+5. After the first successful run, verify that *Settings → Pages* uses **Deploy from a branch**, with `gh-pages` and `/ (root)` selected. GitHub normally detects the generated branch automatically.
 
-    * In your repo, go to *Settings* -> *Actions* -> *General* -> *Workflow permissions*, and check the box, "*Read and write permissions*".
-    * In your repo, go to *Settings* -> *Actions* -> *General* -> *Workflow permissions*, and check the box, "*Allow GitHub Actions to create and approve pull requests*".
-    * In your repo, go to *Settings* -> *Pages* and select the *Deploy from a branch* option. Then select the `gh-pages` branch and click save.
+The public project URL will normally be `https://<organization>.github.io/<repository>/`. A custom domain is optional and can be configured later in the repository's Pages settings.
 
-1. **Populate the publication information in the `README.md`**
+## Publishing revisions
 
-1. **Finalize the publication title**
+Merge each reviewed revision into `main`. GitHub Actions rebuilds the site automatically. Create a Git tag or GitHub release when you want a durable scholarly version, and connect the repository to Zenodo if the release should receive a DOI.
 
-    Update the `title` field in `_variables.yml` to the final publication title. If you later change the title, be sure to also update it in `README.md`.
+## Optional: enable comments with Giscus
 
-1. **Remove references to the demo notebook from `_quarto.yml`**
+Comments are disabled by default. Giscus stores page discussions in GitHub Discussions and requires a public repository.
 
-    Remove the following lines from `_quarto.yml`:
+1. Enable GitHub Discussions for the repository.
+2. Install the [Giscus App](https://github.com/apps/giscus) for the repository.
+3. Use the [Giscus configuration tool](https://giscus.app/) to obtain the repository and category identifiers.
+4. Add the resulting configuration to `_quarto.yml`:
 
-    ```
-    - text: Demo
-      href: /examples/demo.html
-    ```
+   ```yaml
+   comments:
+     giscus:
+       repo: surrogate-sci/<repository>
+       repo-id: <repository-id>
+       category: Announcements
+       category-id: <category-id>
+       mapping: pathname
+       input-position: top
+       loading: lazy
+   ```
 
-    This will remove the *"Demo"* link from the navigation bar.
+Render locally and confirm the comment box loads without an error before publishing.
 
-1. **Make the repository public**
+## Optional: enable analytics and cookie consent
 
-    In order for this pub to be open and reproducible, make the [repo public](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility) when that is appropriate for its data and collaborators.
+Analytics and cookie consent are disabled by default. Do not enable a consent banner unless the publication actually loads analytics or another tracking service.
 
-1. **Enable comments**
+To use Google Analytics, add both settings under `website` in `_quarto.yml`:
 
-    Comments are handled with [Giscus](https://giscus.app/), which Quarto has an integration for. Once enabled, a widget is placed at the bottom of the publication that provides an interface to read, write, react, and respond to [GitHub Discussions](https://docs.github.com/en/discussions) comments. Comments made through the interface are automatically added as comments to a GitHub Discussions thread of your repository.
-
-    First, [enable GitHub Discussions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/enabling-or-disabling-github-discussions-for-a-repository) for your repo.
-
-    Second, [install the Giscus App](https://github.com/apps/giscus) for the organization and repository that will host the publication. Click *Configure*, select the organization, select the repository, and click *Update access*.
-
-    Now, edit the comments section in `_quarto.yml` with your repo name:
-
-    ```yaml
-    comments:
-      giscus:
-        repo: surrogate-sci/<your-repo-name>
-        input-position: top
-    ```
-
-    You may have to wait a few minutes for `make preview` to properly render the Giscus widget.
-
-1. **Make sure the notebook outputs are up to date in `index.ipynb`**
-
-    Begin with a clean branch (no uncommitted changes). Then run the notebook from the command line using the `make execute` command.
-
-    This command will update `index.ipynb` with the latest execution results. Importantly, it may generate runtime artifacts in the `_freeze/` directory.
-
-    Then run `make preview` to see how the publication is rendering. Verify that your changes appear how you intend them to appear. If not, make the necessary changes and re-run `make execute`.
-
-    Once everything looks good, commit `index.ipynb` and all files in the `_freeze/` directory.
-
-    Now, create a pull request to merge your branch into `main`. Once your PR is approved, merge into `main`.
-
-1. **Complete release metadata**
-
-    Replace the placeholders in `CITATION.cff`, `authors.yml`, `_variables.yml`, and `README.md` with accurate author, title, repository, and hosting information. Add any disclosures required by the venue, funder, or collaborators.
-
-1. **Add your Google Analytics ID to `_variables.yml`**
-
-    Add a Google Analytics ID, if you use one, to the `google_analytics_id` field in `_variables.yml`. This ID is used to track visits to the publication.
-
-1. **Create a tagged release of your repo**
-
-    Follow Zenodo's [GitHub integration instructions](https://help.zenodo.org/docs/github/enable-repository/) to link your repository and create a new tagged release.
-
-    Be sure to use a version number of the form 'v1' or 'v1.0' for this initial tagged release.
-
-1. **Merge the auto-generated publication PR**
-
-    When you create a new tagged release in the step above, a GitHub Action automatically builds the public publication and opens a PR to merge the publication files into the `publish` branch.
-
-    This PR should be merged as-is. If you'd like, you can first preview the final publication by checking out the PR branch locally and running `make preview`.
-
-    The publication is deployed by a second GitHub Action that is triggered when this PR is merged. After a few minutes, the publication should be live at a URL of the form: `https://surrogate-sci.dev/<your-repo-name>/`.
-
-1. **[If necessary] Configure GitHub Pages**
-
-    If you do not see your publication after completing the step above, it is likely because your repository is not configured to host the publication on GitHub Pages.
-
-    To fix this, go to the *Settings* tab of your repository, click on the *Pages* section, and select the "Deploy from a branch" option. Then select the `gh-pages` branch.
-
-## Steps for publishing a revision
-
-The initial steps for publishing a revision are described in the [CONTRIBUTING.qmd](../pages/CONTRIBUTING.qmd) file and are the same for internal and external contributors. These steps culminate in a PR containing changes to the notebook and other files that is reviewed as usual and merged into `main`.
-
-Once such a PR is merged into `main`, you can publish a new version of the pub by creating a new tag and pushing it to the repo.
-
-In your local repo, first make sure you are on the `main` branch and pull the latest changes:
-
-```bash
-git checkout main
-git pull
+```yaml
+website:
+  google-analytics: G-XXXXXXXXXX
+  cookie-consent:
+    type: express
+    style: simple
 ```
 
-Then, create a new tag and push it to the repo. For each revision, increment the tag by 1, e.g. 'v1' -> 'v2'. Be sure to use the same format as the initial tagged release (e.g. use 'v2.0' if the initial release was 'v1.0', or 'v2' if the initial release was 'v1').
-
-```bash
-git tag v2
-git push --tags
-```
-
-This will trigger a GitHub Action that builds the publication and opens a PR to merge the publication files into the `publish` branch, just as in the step above ("Create a tagged release of your repo").
-
-Once this PR is merged, the public publication will be updated to include the new version of the notebook (corresponding to the new tag). Previous version(s) of the notebook will remain available via the "versions" menu next to the title of the notebook on the publication page.
+Use an explicit consent model and update the publication's privacy information before release.

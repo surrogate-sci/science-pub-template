@@ -5,6 +5,7 @@ This directory contains documentation for developers who maintain or use the not
 ## Contents
 
 - [Quickstart Guide](QUICKSTART.md): **The most efficient way to get started** is to follow this guide.
+- [CRediT Author Contributions](CREDIT_CONTRIBUTIONS.md): Collect author-approved CRediT assignments and generate a contribution statement.
 - [Environment Setup Guide](ENVIRONMENT_SETUP.md): How to set up your development environment.
 - [Publishing Guide](PUBLISHING_GUIDE.md): How to publish your notebook publication.
 - [Template Architecture](TEMPLATE_ARCHITECTURE.md): Technical details about the structure and components of this template repository.
