@@ -186,3 +186,18 @@ def test_quickstart_does_not_copy_development_branches():
 
     assert "check the box" not in quickstart
     assert "Leave *Include all branches* unchecked" in quickstart
+
+
+def test_public_template_excludes_internal_agent_artifacts():
+    ignored = (ROOT / ".gitignore").read_text()
+
+    assert not (ROOT / "docs/superpowers").exists()
+    for rule in (
+        "/.codex/",
+        "/.agents/",
+        "/.claude/",
+        "/.superpowers/",
+        "/docs/superpowers/",
+        "/session-notes/",
+    ):
+        assert rule in ignored
