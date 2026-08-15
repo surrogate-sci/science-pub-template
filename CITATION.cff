@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: If you use this publication, please cite it using the completed metadata below.
+title: "[PUBLICATION TITLE] — Surrogate Science Publication Template"
+authors:
+  - family-names: "[AUTHOR FAMILY NAME]"
+    given-names: "[AUTHOR GIVEN NAME]"
+    affiliation: Surrogate Science
+repository-code: https://github.com/surrogate-sci/[REPOSITORY-NAME]
+url: https://surrogate-sci.dev/[REPOSITORY-NAME]/
+preferred-citation:
+  type: article
+  title: "[PUBLICATION TITLE] — Surrogate Science Publication Template"
+  authors:
+    - family-names: "[AUTHOR FAMILY NAME]"
+      given-names: "[AUTHOR GIVEN NAME]"
+      affiliation: Surrogate Science
