@@ -2,6 +2,8 @@
 
 This repository is a Surrogate Science template for computational publications authored in Quarto. It supports Jupyter notebooks, executable Python or R content, reproducible figures, and a GitHub Pages HTML publication.
 
+[View the live demo](https://surrogate-sci.github.io/science-pub-template/)
+
 ## Publication themes
 
 The template includes two separate themes built from the same Surrogate Science palette and type system:
