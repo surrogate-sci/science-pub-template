@@ -1,6 +1,14 @@
 # Claude Code
 CLAUDE.md
 
+# Local AI agent and session artifacts
+/.codex/
+/.agents/
+/.claude/
+/.superpowers/
+/docs/superpowers/
+/session-notes/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
