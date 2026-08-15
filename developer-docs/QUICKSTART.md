@@ -4,12 +4,11 @@
 
     In the top-right of this GitHub repo, select the green button that says "*Use this template*".
 
-    Leave *Include all branches* unchecked. The publication workflows create the `publish` and `gh-pages` branches when they are needed, so a new publication should begin from `main` only.
+    Leave *Include all branches* unchecked. The publishing workflow creates the generated `gh-pages` branch when it is needed, so a new publication should begin from `main` only.
 
 2. **Configure your publication**
 
-    * Replace the variables in `_variables.yml`
-      - The `google_analytics_id` field can be left blank during development, but should be populated before publishing. See the [Publishing Guide](PUBLISHING_GUIDE.md) for more details.
+    * Replace the variables in `_variables.yml`.
     * Feel free to edit the variables in `authors.yml`.
       - Replace the example author information with the people and contributor roles for your publication before release.
 
@@ -61,4 +60,4 @@
 
 8. **Publishing**
 
-    See the [Publishing Guide](PUBLISHING_GUIDE.md) for complete instructions on the publishing process.
+    Every push to `main` renders and publishes the site through GitHub Actions. See the [Publishing Guide](PUBLISHING_GUIDE.md) for setup and optional integrations.
