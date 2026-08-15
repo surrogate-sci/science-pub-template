@@ -4,7 +4,7 @@
 
     In the top-right of this GitHub repo, select the green button that says "*Use this template*".
 
-    **IMPORTANT**: When creating your repo from this template, **check the box** that says, "*Include all branches*". This is required because the hosted publication is managed on a separate branch.
+    Leave *Include all branches* unchecked. The publication workflows create the `publish` and `gh-pages` branches when they are needed, so a new publication should begin from `main` only.
 
 2. **Configure your publication**
 
