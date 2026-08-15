@@ -41,6 +41,8 @@ def parse_sections(body: str) -> dict[str, list[str]]:
         heading = SECTION_HEADING.match(line)
         if heading:
             current_heading = heading.group(1)
+            if current_heading in sections:
+                raise CreditStatementError(f"Duplicate section heading: {current_heading}")
             sections[current_heading] = []
         elif current_heading is not None:
             sections[current_heading].append(line.strip())
@@ -72,6 +74,10 @@ def generate_statement(body: str) -> str:
     roster_names = set(roster)
     for role in ROLES:
         assigned = content_lines(sections, role)
+        if not assigned:
+            raise CreditStatementError(
+                f"{role} must contain one or more roster authors or exactly N/A"
+            )
         if len(assigned) == 1 and assigned[0].casefold() == "n/a":
             continue
         for author in assigned:
@@ -108,7 +114,7 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         print(generate_statement(read_body(args.issue_body)))
-    except (CreditStatementError, OSError) as error:
+    except (CreditStatementError, OSError, UnicodeError) as error:
         parser.error(str(error))
     return 0
 

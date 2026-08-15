@@ -65,6 +65,17 @@ def run_generator(tmp_path: Path, body: str) -> subprocess.CompletedProcess[str]
     )
 
 
+def run_generator_bytes(tmp_path: Path, body: bytes) -> subprocess.CompletedProcess[str]:
+    body_path = tmp_path / "issue.md"
+    body_path.write_bytes(body)
+    return subprocess.run(
+        [sys.executable, str(GENERATOR), str(body_path)],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+
 def test_generator_inverts_assignments_in_roster_and_official_role_order(tmp_path):
     result = run_generator(tmp_path, issue_body())
 
@@ -89,6 +100,31 @@ def test_generator_requires_explicit_author_approval(tmp_path):
 
     assert result.returncode == 2
     assert "All authors must review and approve" in result.stderr
+
+
+def test_generator_rejects_a_blank_required_role(tmp_path):
+    result = run_generator(tmp_path, issue_body(methodology=""))
+
+    assert result.returncode == 2
+    assert "Methodology" in result.stderr
+    assert "one or more roster authors or exactly N/A" in result.stderr
+
+
+def test_generator_rejects_duplicate_markdown_headings(tmp_path):
+    body = issue_body() + "\n### Methodology\n\nN/A\n"
+
+    result = run_generator(tmp_path, body)
+
+    assert result.returncode == 2
+    assert "Duplicate section heading: Methodology" in result.stderr
+
+
+def test_generator_reports_invalid_utf8_without_a_traceback(tmp_path):
+    result = run_generator_bytes(tmp_path, b"\xff")
+
+    assert result.returncode == 2
+    assert "can't decode byte" in result.stderr
+    assert "Traceback" not in result.stderr
 
 
 def test_credit_issue_form_collects_all_required_information():
