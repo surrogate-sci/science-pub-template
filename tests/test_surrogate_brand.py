@@ -1,4 +1,5 @@
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
@@ -37,6 +38,29 @@ def test_theme_profiles_are_mutually_exclusive_and_default_to_warm():
 def test_active_logo_is_transparent():
     logo = (THEME / "assets/logo_surrogate_mark.svg").read_text()
     assert "<rect" not in logo
+
+
+def test_active_logo_uses_the_approved_continuous_source_artwork():
+    logo_path = THEME / "assets/logo_surrogate_mark.svg"
+    root = ET.parse(logo_path).getroot()
+    elements = list(root.iter())
+    paths = [element for element in elements if element.tag.endswith("path")]
+    fills = {path.attrib["fill"] for path in paths}
+
+    assert root.attrib["viewBox"] == "0 0 400 400"
+    assert not any(element.tag.endswith("rect") for element in elements)
+    assert not any(element.tag.endswith("image") for element in elements)
+    assert len(paths) == 8
+    assert fills == {
+        "rgb(248,145,34)",
+        "rgb(249,182,65)",
+        "rgb(169,166,156)",
+        "rgb(84,83,78)",
+        "rgb(98,138,142)",
+        "rgb(121,119,112)",
+        "rgb(87,63,22)",
+        "rgb(174,127,45)",
+    }
 
 
 def test_no_upstream_theme_updater_can_overwrite_custom_theme():
@@ -143,6 +167,34 @@ def test_mobile_layout_uses_a_text_wordmark_and_smaller_titles():
     assert "body.surrogate-warm-journal h1.title" in responsive
     assert "body.surrogate-technical-notebook h1.title" in responsive
     assert "font-size: clamp(2.35rem, 12vw, 2.75rem)" in responsive
+
+
+def test_desktop_navbar_reserves_space_for_the_complete_wordmark():
+    navbar = (THEME / "css/navbar.css").read_text()
+    config = (ROOT / "_quarto.yml").read_text()
+    warm = (THEME / "css/themes/warm-journal.css").read_text()
+    technical = (THEME / "css/themes/technical-notebook.css").read_text()
+
+    desktop = re.search(
+        r"@media \(min-width: 641px\)\s*\{(?P<body>.*?)\n\}",
+        navbar,
+        flags=re.DOTALL,
+    )
+    assert desktop
+    assert ".navbar-brand-container" in desktop.group("body")
+    assert "width: auto" in desktop.group("body")
+    assert "max-width: none" in desktop.group("body")
+    assert "flex: 0 0 auto" in desktop.group("body")
+    assert ".navbar-brand" in desktop.group("body")
+    assert "width: max-content" not in desktop.group("body")
+    assert desktop.group("body").count("flex: 0 0 auto") == 2
+    assert "overflow: visible" in desktop.group("body")
+    assert "title: SURROGATE SCIENCE" in config
+    for theme in (warm, technical):
+        assert ".navbar-title" in theme
+        assert ".navbar-brand::after" not in theme
+        assert "width: 2.8rem" in theme
+        assert "height: 2.8rem" in theme
 
 
 def test_main_branch_push_publishes_the_quarto_site():

@@ -1,5 +1,6 @@
 project:
   type: website
+  pre-render: python3 scripts/generate_ai_disclosure.py ai-use.yml disclosures/ai-use.md
   render:
   - '*.qmd'
   - '*.ipynb'
@@ -8,6 +9,7 @@ project:
   resources:
   - authors.yml
   - CITATION.cff
+  - ai-use.yml
 profile:
   default: warm-journal
   group:
@@ -21,7 +23,7 @@ website:
   navbar:
     collapse-below: xl
     pinned: false
-    title: false
+    title: SURROGATE SCIENCE
     left:
     - text: '{{< iconify qlementine-icons:version-control-16 >}}'
       menu:
