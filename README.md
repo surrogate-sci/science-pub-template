@@ -27,6 +27,7 @@ For CI or hosting, set `QUARTO_PROFILE=technical-notebook` to select Theme B. Wi
 All the learning resources for this template can be found in `developer-docs/`.
 
 - [Quickstart Guide](developer-docs/QUICKSTART.md) - **The most efficient way to get started** is to follow this guide (the rest can wait)
+- [CRediT Author Contributions](developer-docs/CREDIT_CONTRIBUTIONS.md) - Collect author-approved roles and generate a contribution statement
 - [Environment Setup Guide](developer-docs/ENVIRONMENT_SETUP.md) - How to set up your development environment
 - [Publishing Guide](developer-docs/PUBLISHING_GUIDE.md) - How to publish your notebook publication
 - [Template Architecture](developer-docs/TEMPLATE_ARCHITECTURE.md) - Understanding the template's structure
