@@ -243,7 +243,4 @@ def test_public_template_excludes_internal_agent_artifacts():
 def test_readme_links_to_the_live_template_demo():
     readme = (ROOT / "README.md").read_text()
 
-    assert (
-        "[View the live demo](https://surrogate-sci.github.io/science-pub-template/)"
-        in readme
-    )
+    assert "[View the live demo](https://surrogate-sci.github.io/science-pub-template/)" in readme
