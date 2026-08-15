@@ -1,0 +1,45 @@
+@media (max-width: 640px) {
+  .surrogate-warm-journal .navbar-brand,
+  .surrogate-technical-notebook .navbar-brand {
+    gap: 0;
+    max-width: calc(100vw - 6.5rem);
+    overflow: visible;
+  }
+
+  .surrogate-warm-journal .navbar-logo,
+  .surrogate-technical-notebook .navbar-logo,
+  .mini-title-logo-wrapper {
+    display: none !important;
+  }
+
+  .surrogate-warm-journal .navbar-brand::after,
+  .surrogate-technical-notebook .navbar-brand::after {
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .mini-title-content {
+    grid-column: page-start / page-end;
+    justify-content: center;
+    padding-inline: 1rem;
+    font-size: 1rem;
+  }
+
+  #mini-version-control {
+    margin-left: 0.65rem;
+  }
+
+  body.surrogate-warm-journal .quarto-title-banner h1,
+  body.surrogate-warm-journal h1.title,
+  body.surrogate-technical-notebook .quarto-title-banner h1,
+  body.surrogate-technical-notebook h1.title {
+    font-size: clamp(2.35rem, 12vw, 2.75rem) !important;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    overflow-wrap: anywhere;
+  }
+
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+}
