@@ -147,6 +147,7 @@ def test_mobile_layout_uses_a_text_wordmark_and_smaller_titles():
 
 def test_main_branch_push_publishes_the_quarto_site():
     publish = (ROOT / ".github/workflows/publish.yml").read_text()
+    architecture = (ROOT / "developer-docs/TEMPLATE_ARCHITECTURE.md").read_text()
 
     assert "push:" in publish
     assert "branches: [main]" in publish
@@ -154,6 +155,9 @@ def test_main_branch_push_publishes_the_quarto_site():
     assert "target: gh-pages" in publish
     assert "ref: publish" not in publish
     assert not (ROOT / ".github/workflows/build.yml").exists()
+    assert not (ROOT / "_build.py").exists()
+    assert "publish branch" not in architecture
+    assert "`publish` branch" not in architecture
 
 
 def test_note_callout_icon_does_not_use_bootstrap_blue():
